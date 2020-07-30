@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    
     use Notifiable;
 
     /**
@@ -36,4 +37,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function image()
+    {
+        return $this->morphOne( Image::class, 'imageable');
+    }
+
+     public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
+    }
 }

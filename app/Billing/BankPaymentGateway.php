@@ -11,7 +11,7 @@ class BankPaymentGateway implements PaymentGatewayContract
     private $currency;
     private $discount;
 
-    public function __construct( $currency ) 
+    public function __construct( $currency = 'mata uang tidak dikenal' ) 
     {
         $this->currency = $currency;
         $this->discount = 0;    

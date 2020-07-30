@@ -6,6 +6,9 @@ namespace App\Http\Controllers;
 use App\Billing\PaymentGatewayContract;
 use App\Orders\OrderDetails;
 use Illuminate\Http\Request;
+use App\Cloudinary\CloudinaryInterface;
+use App\Cloudinary\PostGateway;
+use App\Cloudinary\TestClass;
 
 class PayOrderController extends Controller
 {
@@ -30,5 +33,14 @@ class PayOrderController extends Controller
 
         dd($result);
 
+    }
+
+    public function testing(CloudinaryInterface $jajal) {
+        // $jajal = new CloudinaryInterface();
+        // $jajal = new PostGateway();
+
+        // $result = $jajal->result('hello world');
+        $result = $jajal->upload('adib orang purwodadi');
+        dd($result);
     }
 }
