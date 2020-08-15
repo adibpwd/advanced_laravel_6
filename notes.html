@@ -1,6 +1,6 @@
 Service Contaier ?
     = biar rapi logika ditaruh difolder lain bkin di dalam app dan bkin class2 perlogika seperti App\Cloudinary\TestClass.php ini class dan dipanggil di
-      App\Http\Controllers\PayOrderController.php di method testing..dipaling atas bisa dipanggil pakai use App\Cloudinary\TestClass; 
+      Controller App\Http\Controllers\PayOrderController.php di method testing..dipaling atas bisa dipanggil pakai use App\Cloudinary\TestClass; 
       dan instansiai di dalam function yang mau makek seperti ini $test = new TestClass(); atau didalam function kayak parameter misal public function
       testing(TestClass $test) pemanggilan sama $test->upload('hello world'); jika bikin banyak class tapi berhubungan bisa pakai interface nggak mungkin
       use classnya 1 per 1...dan insiansinya nanti bakal banyak...bisa pakai service container dibawah
@@ -9,7 +9,7 @@ Service Contaier ?
     PaymentGatewayContract...nanti jika mau menggunakan method2 di BankPaymentGateway / CreditPaymentGateway cukup Panggil Class PaymentGatewayContract dengan
     use..contohnya di PayOrderController ada use interfacenya dan insiasinya di parameter / didalam function kek diatas bisa...dan pakai method2 yang ada di
     2 class itu... tapi bakal error kalau tidak di bind / singleton seperti dibawah karna interface harus diinstiansi otomatis kayak dibawah..
-    = ada bind dan singleton
+    = ada bind dan singleton sama2 buat insialisasi interface...
         $this->app->bind( PaymentGateway::class, function($app) {
             return new PaymentGateway('rupiah');
         });
@@ -216,5 +216,8 @@ notify laravel ?
         return 'https://hooks.slack.com/services/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'; ganti url yang didapat
     }
 
+    jika ganti url semua method routeNotificationForSlack diclass2 diganti..harus sama dengan yang dienv
 
 
+
+    Service Contaier, polymorphic, Facades, macros, pipeline, repository pattern, lazy collection, softDeletes, notify laravel

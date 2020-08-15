@@ -17,6 +17,7 @@ use App\newsAPI\NewsApiService;
 use Illuminate\Support\Str;
 use Response;
 use App\Mixins\StrMixins;
+use App\Orders\OrderDetails;
 
 
 
@@ -61,6 +62,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(
+            'pay', 'App\Orders\OrderDetails',
+        );
         Schema::defaultStringLength(191);
 
         // view::share('channels', Channel::orderBy('name', 'desc')->get());
@@ -77,6 +81,8 @@ class AppServiceProvider extends ServiceProvider
         // bisa pakai AppServiceProvider.php di method boot() kek dibawah ini..
 
         // view::composer(['partials.channels.*'], ChannelsComposer::class);
+
+      
     
         $this->app->singleton('Postcard', function($app) {
             return new PostcardSendingService('indonesia', 5, 10);

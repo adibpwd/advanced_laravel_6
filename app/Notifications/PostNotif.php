@@ -24,9 +24,23 @@ class PostNotif extends Notification
 
     private $post;
 
-    public function __construct($table = 'kosong gan') 
+    public function __construct($table = null) 
     {
-        $this->post = $table;
+        if($table == null)
+        {
+            $this->post = [
+                'post' => [
+                    'title' => 'title kosong',
+                    'username' => 'username kosong',
+                    'body' => 'body kosong',
+                    'created_at' => 'kosong juga'
+                ]
+            ];;
+        }
+        else
+        {
+            $this->post = $table;
+        }
     }
 
     /**
@@ -37,6 +51,7 @@ class PostNotif extends Notification
      */
     public function via($notifiable)
     {
+        // dd($this->post);
         return ['slack', 'mail', 'database'];
     }
 
@@ -82,11 +97,12 @@ class PostNotif extends Notification
 
     public function toSlack($notifiable)
     {
+        // dd($this->post);
         $message = "Post Baru \n judul = " . $this->post['post']['title']  . "\n content = " . Str::limit($this->post['post']['body'], 75, '...');
         
         return (new SlackMessage)
                 ->from($this->post['post']['username'], ':ghost:')
-                ->to('#testslackadib')
+                ->to('#blog')
                 ->content($message);
     }
 }

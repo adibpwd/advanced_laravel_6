@@ -341,6 +341,7 @@
                 timeout: 6000000,
                 success: function (data) {
                     console.log(data);
+                    alert('berhasil kirim komen..jika mau kirim lagi refresh halaman...');
 
                 },
                 error: function (e) {

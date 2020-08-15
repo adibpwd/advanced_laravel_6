@@ -34,8 +34,9 @@ Route::get('channels', 'ChannelController@index');
 Route::get('posts/create', 'PostController@create');
 Route::get('pipeline', 'PostController@pipeline');
 
-Route::get('polymorphic', 'PolymorphicController@index');
-Route::post('polymorphic', 'PolymorphicController@store');
+Route::match(['get', 'post'], '/polymorphic', 'PolymorphicController@index');
+// Route::get('polymorphic', 'PolymorphicController@index');
+// Route::post('polymorphic', 'PolymorphicController@store');
 Route::get('polymorphic-view', 'PolymorphicController@index')->defaults('view', 'view');
 
 Route::get('/test', 'PayOrderController@testing');
@@ -103,6 +104,7 @@ Route::get('/test-mail/{table}/{id}', function ($table, $id){
 
     $user = User::find(1)->first();
     
+    // dd($user);
     if($table == 'post')
     {
         $post = Post::where('id', $id)->first();

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Billing\BankPaymentGateway;
 use App\Billing\PaymentGatewayContract;
-use App\Orders\OrderDetails;
+// use App\Orders\OrderDetails;
 use Illuminate\Http\Request;
 use App\Cloudinary\CloudinaryInterface;
 use App\Cloudinary\PostGateway;
@@ -31,13 +31,14 @@ class PayOrderController extends Controller
             'diskon' => $payment['discount'] 
         ];
 
-        dd($result);
+        return view('welcome', compat('result'));
+
 
     }
 
     public function testing(CloudinaryInterface $jajal) {
         // $jajal = new CloudinaryInterface();
-        // $jajal = new PostGateway();
+        // $jajal = new PostGateway(); 
 
         // $result = $jajal->result('hello world');
         $result = $jajal->upload('adib orang purwodadi');
